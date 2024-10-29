@@ -1,0 +1,83 @@
+P::first-line {
+    color: red;
+}
+
+p::first-letter {
+    color: blue;
+}
+
+::selection {
+    color: green;
+    background-color: darkblue;
+}
+
+ul {
+    color: red;
+}
+
+::marker {
+    color: green;
+}
+
+/* before and after content INSIDE the h2 tag */
+h2::before {
+    content: '';
+    background-color: red;
+    display: block;
+    width: 20px;
+    height: 20px;
+}
+
+h2::after {
+    content: '';
+    background-color: green;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+
+/* before and after NOT working for tags without content inside */
+input::before, input::after {
+    content: '';
+    background-color: red;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+
+/* applying hashtags before every h3 */
+h3::before {
+    content: '#';
+}
+
+/* applying # before any element with the hashtag class 
+   lets us use # before any hashtag no matter where it appears */
+.hashtag::before {
+    content: '#';
+}
+
+/* to set absolute position for ::before and ::after relative to blockquote */
+blockquote {
+    position: relative;
+    margin-top: 3rem;
+}
+
+blockquote::before,
+blockquote::after {
+    background-color: darkgray;
+    padding: 0.5rem 0.8rem;
+    border-radius: 50%;
+    position: absolute;
+}
+
+blockquote::before {
+    left: -2rem;
+    top: -2rem;
+    content: open-quote;
+}
+
+blockquote::after {
+    right: -2rem;
+    bottom: -2rem;
+    content: close-quote;
+}
