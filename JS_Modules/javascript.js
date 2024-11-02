@@ -13,3 +13,10 @@ console.log(fun);
 fun.fun1();
 fun.fun2();
 fun.fun3();
+
+// importing default without {} - automatically using alias, but same name as file and class recommended for clarity
+// using ',' and {} to import anything more than default from that file
+import Animal, { TEST } from "./animal.js";
+const dog = new Animal('Dog');
+dog.eat();
+console.log(TEST);
