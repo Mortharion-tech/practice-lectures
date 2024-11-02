@@ -6,5 +6,5 @@ export function getFormattedDate(date) {
 
 // exporting variables in the same way
 /* export */ const DEFAULT_DATE_FORMAT = 'dd/mm/yyyy';
-// exporting with an alias instead, importing in another file only using alias
+// exporting with an alias instead, import in another file only using alias
 export { DEFAULT_DATE_FORMAT as defaultDateFormat };

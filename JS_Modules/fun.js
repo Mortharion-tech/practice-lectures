@@ -10,4 +10,9 @@ export function fun3() {
     console.log(3);
 }
 
+// not accessible without exporting, even when importing all with '*'
+function fun4() {
+    console.log(4);
+}
+
 export const lol = 'lol';
