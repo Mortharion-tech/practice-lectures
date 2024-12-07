@@ -2,6 +2,9 @@ function App() {
 
   let counter = 0;
 
+  const increment = () => counter = counter + 1;
+  const decrement = () => counter = counter - 1;
+
   return (
     <div>
       <button>-</button>
