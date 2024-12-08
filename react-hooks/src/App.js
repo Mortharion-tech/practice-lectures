@@ -1,9 +1,11 @@
+import { useState } from "react";
+
 function App() {
 
-  let counter = 1;
+  const [counter, setCounter] = useState(0);
 
-  const increment = () => counter = counter + 1;
-  const decrement = () => counter = counter - 1;
+  const increment = () => setCounter(counter + 1);
+  const decrement = () => setCounter(counter - 1);
 
   return (
     <div>
