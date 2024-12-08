@@ -1,15 +1,15 @@
 function App() {
 
-  let counter = 0;
+  let counter = 1;
 
   const increment = () => counter = counter + 1;
   const decrement = () => counter = counter - 1;
 
   return (
     <div>
-      <button>-</button>
+      <button onClick={decrement}>-</button>
       <h2>{counter}</h2>
-      <button>+</button>
+      <button onClick={increment}>+</button>
     </div>
   );
 }
