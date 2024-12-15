@@ -30,29 +30,29 @@ export default function App() {
 /*   const [tasks, setTasks] = useState(initialTasks); */
   const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
 
-  function handleAddTask(text) {
+/*   function handleAddTask(text) {
     dispatch({
       type: 'ADD_TODO',
       text,
     });
-  }
+  } */
 
-  function handleChangeTask(task) {
+/*   function handleChangeTask(task) {
     dispatch({
       type: 'UPDATE_TODO',
       task,
     });
-  }
+  } */
 
-  function handleDeleteTask(taskId) {
-/*     setTasks(tasks.filter((t) => t.id !== taskId)); */
-  }
+/*   function handleDeleteTask(taskId) {
+//    setTasks(tasks.filter((t) => t.id !== taskId));
+  } */
 
   return (
     <>
       <h1>TODO App</h1>
-      <AddTodo handleAddTask={handleAddTask} />
-      <TasksList tasks={tasks} handleChangeTask={handleChangeTask} handleDeleteTask={handleDeleteTask} />
+      <AddTodo dispatch={dispatch} />
+      <TasksList tasks={tasks} dispatch={dispatch} />
     </>
   );
 }

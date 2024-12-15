@@ -1,8 +1,11 @@
-export default function AddTodo({ handleAddTask }) {
+export default function AddTodo({ dispatch }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
-        handleAddTask(formData.get('text'))
+        dispatch({
+            type: 'ADD_TODO',
+            text: (formData.get('text'))
+        });
     }
 
     return (
