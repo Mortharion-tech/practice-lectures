@@ -1,35 +1,51 @@
-import { useState } from 'react';
+import { useReducer } from 'react';
 import AddTodo from './AddTodo';
 import TasksList from './TasksList';
 
-export default function App() {
-  const [tasks, setTasks] = useState(initialTasks);
-
-  function handleAddTask(text) {
-    setTasks([
-      ...tasks,
-      {
-        id: nextId++,
-        text: text,
-        done: false,
-      },
-    ]);
-  }
-
-  function handleChangeTask(task) {
-    setTasks(
-      tasks.map((t) => {
-        if (t.id === task.id) {
-          return task;
+function tasksReducer(tasks, action) {
+  switch(action.type) {
+    case 'ADD_TODO':
+      return [
+        ...tasks,
+        {
+          id: nextId++,
+          text: action.text,
+          done: false,
+        },
+      ];
+    case 'UPDATE_TODO':
+      return tasks.map((t) => {
+        if (t.id === action.task.id) {
+          return action.task;
         } else {
           return t;
         }
-      })
-    );
+      });
+      default:
+        return tasks;
+  }
+}
+
+export default function App() {
+/*   const [tasks, setTasks] = useState(initialTasks); */
+  const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
+
+  function handleAddTask(text) {
+    dispatch({
+      type: 'ADD_TODO',
+      text,
+    });
+  }
+
+  function handleChangeTask(task) {
+    dispatch({
+      type: 'UPDATE_TODO',
+      task,
+    });
   }
 
   function handleDeleteTask(taskId) {
-    setTasks(tasks.filter((t) => t.id !== taskId));
+/*     setTasks(tasks.filter((t) => t.id !== taskId)); */
   }
 
   return (
