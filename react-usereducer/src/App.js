@@ -21,8 +21,10 @@ function tasksReducer(tasks, action) {
           return t;
         }
       });
-      default:
-        return tasks;
+    case 'DELETE_TODO':
+      return tasks.filter((t) => t.id !== action.taskId);
+    default:
+      return tasks;
   }
 }
 

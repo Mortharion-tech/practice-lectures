@@ -13,9 +13,13 @@ export default function TasksList({ tasks, dispatch }) {
                 type="checkbox" checked={task.done}
             />
             {task.text}
-            <button onClick={() => {
-            /*     handleDeleteTask(task.id) */
-            }}>Delete</button>
+            <button onClick={() => 
+                dispatch({
+                    type: 'DELETE_TODO',
+                    taskId: task.id
+                })}>
+                        Delete
+                </button>
         </li>
         )}
         </>
