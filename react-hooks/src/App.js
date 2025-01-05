@@ -1,23 +1,28 @@
-import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
-function App() {
+import UseStateEx from "./UseStateEx";
+import UseEffectEx from "./UseEffectEx";
 
-  const [counter, setCounter] = useState(0);
-
-  const increment = () => setCounter((value) => value + 1);
-  const decrement = () => setCounter(counter - 1);
-
+export default function App() {
   return (
-    <div>
-      <button onClick={decrement}>-</button>
-      <h2>{counter}</h2>
-      <button onClick={increment}>+</button>
-      <button onClick={() => {
-        increment();
-        increment();
-      }}>+2</button>
+    <div className="App">
+      <Router>
+        <Routes>
+          <Route path="/useEffectExample" element={
+            <>
+              <p>Another page</p>
+              <Link to="/">Go back</Link>
+            </>
+          } />
+          <Route path="/" element={
+            <>
+              <h1>React hooks</h1>
+              <UseStateEx />
+              <UseEffectEx />
+            </>
+          } />
+        </Routes>
+      </Router>
     </div>
   );
 }
-
-export default App;
