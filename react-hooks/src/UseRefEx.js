@@ -18,4 +18,8 @@ export default function UseRefEx() {
         clearInterval(timerIdRef.current);
         timerIdRef.current = 0;
     };
+
+    useEffect(() => {
+        return () => clearInterval(timerIdRef.current);
+    }, []);
 }
