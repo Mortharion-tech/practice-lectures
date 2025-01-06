@@ -13,4 +13,9 @@ export default function UseRefEx() {
         }
         timerIdRef.current = setInterval(() => setCount((c) => c + 1), 1000);
     };
+
+    const stopHandler = () => {
+        clearInterval(timerIdRef.current);
+        timerIdRef.current = 0;
+    };
 }
