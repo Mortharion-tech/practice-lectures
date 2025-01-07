@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 
 export default function UseRefEx() {
-    const timerIdRef = {};
+    const timerIdRef = useRef(0);
     console.log("render");
     console.log(timerIdRef);
 
