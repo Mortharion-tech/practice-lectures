@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 
 export default function UseRefEx() {
+    //  Example 1
     const timerIdRef = useRef(0);
     //  working too but slightly less efficient
    /*  const [timerIdRef, setTimer] = useState({}); */
@@ -25,4 +26,16 @@ export default function UseRefEx() {
     useEffect(() => {
         return () => clearInterval(timerIdRef.current);
     }, []);
+
+    //  Example 2
+    const inputRef = useRef();
+    const inputWithValueRef = useRef();
+    useEffect(() => {
+        inputRef.current.focus();
+        inputWithValueRef.current.value = "Initial input value";
+    }, []);
+
+    const updateInputValue = () => {
+        inputWithValueRef.current.value += "a";
+    };
 }
