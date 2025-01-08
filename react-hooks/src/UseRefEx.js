@@ -31,12 +31,14 @@ export default function UseRefEx() {
     const inputRef = useRef();
     const inputWithValueRef = useRef();
     useEffect(() => {
-        inputRef.current.focus();
-        inputWithValueRef.current.value = "Initial input value";
+    /*     inputRef.current.focus(); */
+/*         inputWithValueRef.current.value = "Initial input value"; */
     }, []);
 
+    const [inputValue, setInputValue] = useState("Default")
+
     const updateInputValue = () => {
-        inputWithValueRef.current.value += "a";
+        setInputValue(inputValue + "a")
     };
 
     return (
@@ -66,8 +68,11 @@ export default function UseRefEx() {
             </div>
             <div className="example-ref">
                 <div>
-                    <input className="form-field" ref={inputWithValueRef}></input>
+                    <input className="form-field" ref={inputValue}></input>
                 </div>
+                <a href="#i" className="green" onClick={updateInputValue}>
+                    Update input
+                </a>
             </div>
         </div>
     )
