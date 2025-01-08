@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 import UseStateEx from "./UseStateEx";
 import UseEffectEx from "./UseEffectEx";
+import UseRefEx from "./UseRefEx";
 
 export default function App() {
   return (
@@ -17,8 +18,9 @@ export default function App() {
           <Route path="/" element={
             <>
               <h1>React hooks</h1>
-              <UseStateEx />
-              <UseEffectEx />
+            {/*   <UseStateEx /> */}
+            {/*   <UseEffectEx /> */}
+              <UseRefEx />
             </>
           } />
         </Routes>
