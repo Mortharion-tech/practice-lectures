@@ -3,7 +3,7 @@ import { useReducer, createContext, useContext } from "react";
 export const Context = createContext(null);
 
 export default function UseContextEx() {
-    const a = "LOL";
+    const a = "Yes";
 
     return (
         <div>
