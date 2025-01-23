@@ -12,6 +12,9 @@ const BlockWithMemo = memo(
     );
   },
   (prevProps, newProps) => {
+    if (prevProps.random !== newProps.random) {
+      return false;
+    }
     return true;
   }
 );
