@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import Block from "./Block";
+import BlockWithMemo from "./BlockWithMemo";
 
 function App() {
   const [text, setText] = useState("");
@@ -19,6 +20,15 @@ function App() {
           </Block>
           <Block />
         </Block>
+        <BlockWithMemo>
+          <BlockWithMemo>
+            <BlockWithMemo />
+            <BlockWithMemo>
+              <BlockWithMemo />
+            </BlockWithMemo>
+          </BlockWithMemo>
+          <BlockWithMemo />
+        </BlockWithMemo>
       </div>
     </div>
   );
