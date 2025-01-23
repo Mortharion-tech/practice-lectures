@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import Block from "./Block";
 
 function App() {
   const [text, setText] = useState("");
