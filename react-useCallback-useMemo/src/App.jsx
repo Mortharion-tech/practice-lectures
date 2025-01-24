@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import "./App.css";
 import TodoList from "./TodoList";
+import AddTodo from "./AddTodo";
 
 let nextId = 3;
 const initialTasks = [
@@ -23,7 +24,7 @@ export default function App() {
     ]);
   };
 
-  const handleUpdateTodo = (updatedTask) => {
+  const handleUpdateTodo = useCallback((updatedTask) => {
     setTasks((tasks) =>
       tasks.map((t) => {
         if (t.id === updatedTask.id) {
@@ -33,7 +34,8 @@ export default function App() {
         }
       })
     );
-  };
+    //empty dependency array so function is only created on the 1. render (to keep the same version of this function)
+  }, []);
 
   return (
     <main>
