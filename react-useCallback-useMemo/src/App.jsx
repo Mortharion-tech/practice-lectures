@@ -12,6 +12,8 @@ const initialTasks = [
 
 export default function App() {
   const [tasks, setTasks] = useState(initialTasks);
+  const [filter, setFilter] = useState("all");
+  const filteredTasks = getFilteredTasks(tasks, filter);
 
   const handleAddTodo = (newTodo) => {
     setTasks([
@@ -41,7 +43,42 @@ export default function App() {
     <main>
       <h1>TODO App</h1>
       <AddTodo onAdd={handleAddTodo} />
-      <TodoList tasks={tasks} handleChange={handleUpdateTodo} />
+      <div className="filterWrapper">
+        <span
+          className={filter === "all" ? "selected" : ""}
+          onClick={() => setFilter("all")}
+        >
+          All
+        </span>
+        <span
+          className={filter === "completed" ? "selected" : ""}
+          onClick={() => setFilter("completed")}
+        >
+          Completed
+        </span>
+        <span
+          className={filter === "uncompleted" ? "selected" : ""}
+          onClick={() => setFilter("uncompleted")}
+        >
+          Uncompleted
+        </span>
+      </div>
+      <TodoList tasks={filteredTasks} handleChange={handleUpdateTodo} />
     </main>
   );
+}
+
+let getFilteredCallsCount = 0;
+function getFilteredTasks(tasks, filter) {
+  getFilteredCallsCount++;
+  switch (filter) {
+    case "all":
+      return tasks;
+    case "completed":
+      return tasks.filter((task) => task.done);
+    case "uncompleted":
+      return tasks.filter((task) => !task.done);
+    default:
+      return tasks;
+  }
 }
