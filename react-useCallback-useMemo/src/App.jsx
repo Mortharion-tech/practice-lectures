@@ -12,6 +12,7 @@ const initialTasks = [
 
 export default function App() {
   const [tasks, setTasks] = useState(initialTasks);
+  const [themeColor, setThemeColor] = useState("#13223d");
   const [filter, setFilter] = useState("all");
   const filteredTasks = getFilteredTasks(tasks, filter);
 
@@ -40,7 +41,10 @@ export default function App() {
   }, []);
 
   return (
-    <main>
+    <main style={{ backgroundColor: themeColor }}>
+      <div className="row">
+        Get filtered called <div className="badge">{getFilteredCallsCount}</div>
+      </div>
       <h1>TODO App</h1>
       <AddTodo onAdd={handleAddTodo} />
       <div className="filterWrapper">
@@ -64,6 +68,11 @@ export default function App() {
         </span>
       </div>
       <TodoList tasks={filteredTasks} handleChange={handleUpdateTodo} />
+      <input
+        type="color"
+        value={themeColor}
+        onChange={(e) => setThemeColor(e.target.value)}
+      />
     </main>
   );
 }
