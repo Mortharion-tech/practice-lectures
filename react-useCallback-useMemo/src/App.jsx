@@ -14,10 +14,12 @@ export default function App() {
   const [tasks, setTasks] = useState(initialTasks);
   const [themeColor, setThemeColor] = useState("#13223d");
   const [filter, setFilter] = useState("all");
+  console.time("a");
   const filteredTasks = useMemo(
     () => getFilteredTasks(tasks, filter),
     [tasks, filter]
   );
+  console.timeEnd("a");
 
   const handleAddTodo = (newTodo) => {
     setTasks([
