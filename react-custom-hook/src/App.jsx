@@ -1,10 +1,8 @@
-import { useState } from "react";
 import "./App.css";
+import { useToggle } from "./hooks/useToggle";
 
 export default function App() {
-  const [isOn, setIsOn] = useState(false);
-
-  const toggle = () => setIsOn((x) => !x);
+  const [isOn, toggle] = useToggle(false);
 
   return (
     <div>
