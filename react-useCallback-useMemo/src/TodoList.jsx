@@ -1,6 +1,7 @@
+import { memo } from "react";
 import TodoItem from "./TodoItem";
 
-export default function TodoList({ tasks, handleChange }) {
+export default memo(function TodoList({ tasks, handleChange }) {
   return (
     <ul>
       {tasks.map((task) => (
@@ -8,4 +9,4 @@ export default function TodoList({ tasks, handleChange }) {
       ))}
     </ul>
   );
-}
+});
