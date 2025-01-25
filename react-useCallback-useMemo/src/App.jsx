@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
 import "./App.css";
 import TodoList from "./TodoList";
 import AddTodo from "./AddTodo";
@@ -14,7 +14,10 @@ export default function App() {
   const [tasks, setTasks] = useState(initialTasks);
   const [themeColor, setThemeColor] = useState("#13223d");
   const [filter, setFilter] = useState("all");
-  const filteredTasks = getFilteredTasks(tasks, filter);
+  const filteredTasks = useMemo(
+    () => getFilteredTasks(tasks, filter),
+    [tasks, filter]
+  );
 
   const handleAddTodo = (newTodo) => {
     setTasks([
@@ -37,8 +40,8 @@ export default function App() {
         }
       })
     );
-    //empty dependency array so function is only created on the 1. render (to keep the same version of this function)
   }, []);
+  //empty dependency array so function is only created on the 1. render (to keep the same version of this function)
 
   return (
     <main style={{ backgroundColor: themeColor }}>
