@@ -7,6 +7,10 @@ const initialFormValue = {
   age: "",
   height: "",
   weight: "",
+  socialProfileScores: {
+    instaFollowers: "",
+    twitterFollowers: "",
+  },
 };
 
 export default function App() {
@@ -53,6 +57,37 @@ export default function App() {
         <input
           value={form.weight}
           onChange={(e) => setForm({ ...form, weight: e.target.value })}
+        />
+      </label>
+      <h2>Social</h2>
+      <label>
+        Insta Followers:{" "}
+        <input
+          value={form.socialProfileScores.instaFollowers}
+          onChange={(e) =>
+            setForm({
+              ...form,
+              socialProfileScores: {
+                ...form.socialProfileScores,
+                instaFollowers: e.target.value,
+              },
+            })
+          }
+        />
+      </label>
+      <label>
+        Twitter Followers:{" "}
+        <input
+          value={form.socialProfileScores.twitterFollowers}
+          onChange={(e) =>
+            setForm({
+              ...form,
+              socialProfileScores: {
+                ...form.socialProfileScores,
+                twitterFollowers: e.target.value,
+              },
+            })
+          }
         />
       </label>
       <input type="submit" />
