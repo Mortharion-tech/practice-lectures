@@ -8,7 +8,8 @@ const initialTasks = [
 
 export default function App2() {
   const [tasks, setTasks] = useState(initialTasks);
-  const [selectedTask, setSelectedTask] = useState(initialTasks[0]);
+  const [selectedTaskId, setSelectedTaskId] = useState(initialTasks[0]?.id);
+  const selectedTask = tasks.find((task) => task.id === selectedTaskId);
 
   function handleItemChane(id, e) {
     setTasks(
@@ -36,7 +37,7 @@ export default function App2() {
               handleItemChane(task.id, e);
             }}
           />
-          <button onClick={() => setSelectedTask(task)}>Select</button>
+          <button onClick={() => setSelectedTaskId(task.id)}>Select</button>
         </div>
       ))}
     </div>
