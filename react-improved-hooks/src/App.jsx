@@ -2,20 +2,24 @@ import { useState } from "react";
 import "./App.css";
 
 export default function App() {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [age, setAge] = useState("");
-  const [height, setHeight] = useState("");
-  const [weight, setWeight] = useState("");
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    age: "",
+    height: "",
+    weight: "",
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    setFirstName("");
-    setLastName("");
-    setAge("");
-    setHeight("");
-    setWeight("");
+    setForm({
+      firstName: "",
+      lastName: "",
+      age: "",
+      height: "",
+      weight: "",
+    });
   };
 
   return (
@@ -23,24 +27,37 @@ export default function App() {
       <label>
         First name:{" "}
         <input
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
+          value={form.firstName}
+          onChange={(e) => setForm({ ...form, firstName: e.target.value })}
         />
       </label>
       <label>
         Last name:{" "}
-        <input value={lastName} onChange={(e) => setLastName(e.target.value)} />
+        <input
+          value={form.lastName}
+          onChange={(e) => setForm({ ...form, lastName: e.target.value })}
+        />
       </label>
       <label>
-        Age: <input value={age} onChange={setAge(e.target.value)} />
+        Age:{" "}
+        <input
+          value={form.age}
+          onChange={(e) => setForm({ ...form, age: e.target.value })}
+        />
       </label>
       <label>
         Height:{" "}
-        <input value={height} onChange={(e) => setHeight(e.target.value)} />
+        <input
+          value={form.height}
+          onChange={(e) => setForm({ ...form, height: e.target.value })}
+        />
       </label>
       <label>
         Weight:{" "}
-        <input value={weight} onChange={(e) => setWeight(e.target.value)} />
+        <input
+          value={form.weight}
+          onChange={(e) => setForm({ ...form, weight: e.target.value })}
+        />
       </label>
       <input type="submit" />
     </form>
