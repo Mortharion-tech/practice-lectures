@@ -1,25 +1,21 @@
 import { useState } from "react";
 import "./App.css";
 
+const initialFormValue = {
+  firstName: "",
+  lastName: "",
+  age: "",
+  height: "",
+  weight: "",
+};
+
 export default function App() {
-  const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
-    age: "",
-    height: "",
-    weight: "",
-  });
+  const [form, setForm] = useState(initialFormValue);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    setForm({
-      firstName: "",
-      lastName: "",
-      age: "",
-      height: "",
-      weight: "",
-    });
+    setForm(initialFormValue);
   };
 
   return (
