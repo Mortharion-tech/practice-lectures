@@ -5,7 +5,7 @@ export default function App3() {
 
   return (
     <div>
-      <Profile page={page} />
+      <Profile key={page} page={page} />
       <button onClick={() => setPage(page + 1)}>Next</button>
     </div>
   );
@@ -13,10 +13,6 @@ export default function App3() {
 
 function Profile({ page }) {
   const [comment, setComment] = useState("");
-
-  useEffect(() => {
-    setComment("");
-  }, [page]);
 
   return (
     <div>
