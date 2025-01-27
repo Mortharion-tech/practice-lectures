@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
+import Admin from "./Admin";
 
 export default function App3() {
   const [page, setPage] = useState(1);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   return (
     <div>
       <Profile key={page} page={page} />
       <button onClick={() => setPage(page + 1)}>Next</button>
+      {isAdmin && <Admin />}
     </div>
   );
 }
