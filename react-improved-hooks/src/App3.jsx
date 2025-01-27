@@ -1,15 +1,17 @@
-import { useEffect, useState } from "react";
-import Admin from "./Admin";
+import { useState, lazy, Suspense } from "react";
+
+const Admin = lazy(() => import("./Admin.jsx"));
 
 export default function App3() {
   const [page, setPage] = useState(1);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(true);
 
   return (
     <div>
       <Profile key={page} page={page} />
       <button onClick={() => setPage(page + 1)}>Next</button>
-      {isAdmin && <Admin />}
+      {/* Pass loader component inside of fallback */}
+      <Suspense fallback={<h2>Loading</h2>}>{isAdmin && <Admin />}</Suspense>
     </div>
   );
 }
