@@ -17,14 +17,16 @@ function ProductList() {
     );
   }, [query]);
 
-  const sortedProducts = [...filteredProducts].sort((a, b) => {
+  const sortedProducts = useMemo(() => {
     console.log("resort");
-    if (sortBy === "name") {
-      return a.name.localeCompare(b.name);
-    } else {
-      return a.price - b.price;
-    }
-  });
+    return [...filteredProducts].sort((a, b) => {
+      if (sortBy === "name") {
+        return a.name.localeCompare(b.name);
+      } else {
+        return a.price - b.price;
+      }
+    });
+  }, [filteredProducts, sortBy]);
 
   const totalPrice = filteredProducts.reduce((acc, product) => {
     console.log("recalculate");
