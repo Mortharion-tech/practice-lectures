@@ -16,6 +16,7 @@ function ProductList() {
 
   const filteredProducts = useMemo(() => {
     console.log("refilter");
+    //  worth adding timeout here for debounce?
     return initialProducts.filter((product) =>
       product.name.toLowerCase().includes(query.toLowerCase())
     );
@@ -34,9 +35,7 @@ function ProductList() {
 
   const totalPrice = useMemo(() => {
     console.log("recalculate");
-    return filteredProducts.reduce((acc, product) => {
-      acc + product.price;
-    }, 0);
+    return filteredProducts.reduce((acc, product) => acc + product.price, 0);
   }, [filteredProducts]);
 
   return (
