@@ -4,9 +4,13 @@ const initialProducts = [
   { id: 1, name: "Laptop", price: 800 },
   { id: 2, name: "Phone", price: 300 },
   { id: 3, name: "TV", price: 400 },
+  //  When we have 2 similar words ("top"), results don't change from searching "to" to "top" but we are still resorting and recalculating
+  //  Is changing that even worth all the overhead?
+  { id: 4, name: "Tabletop", price: 500 },
 ];
 
 function ProductList() {
+  //  Worth to add useCallback for event handlers?
   const [query, setQuery] = useState("");
   const [sortBy, setSortBy] = useState("name"); // or 'price'
 
