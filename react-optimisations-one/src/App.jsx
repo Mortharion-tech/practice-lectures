@@ -28,10 +28,12 @@ function ProductList() {
     });
   }, [filteredProducts, sortBy]);
 
-  const totalPrice = filteredProducts.reduce((acc, product) => {
+  const totalPrice = useMemo(() => {
     console.log("recalculate");
-    return acc + product.price;
-  }, 0);
+    return filteredProducts.reduce((acc, product) => {
+      acc + product.price;
+    }, 0);
+  }, [filteredProducts]);
 
   return (
     <div>
