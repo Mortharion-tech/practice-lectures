@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { memo, useCallback, useState } from "react";
 
 const ChildComponent = memo(function ChildComponent({ action, item }) {
   console.log("ChildComponent rendered");
@@ -16,9 +16,12 @@ function ParentComponent() {
     { id: 3, name: "Cherry" },
   ]);
 
-  const removeItem = (id) => {
-    setItems(items.filter((item) => item.id !== id));
-  };
+  const removeItem = useCallback(
+    (id) => {
+      setItems(items.filter((item) => item.id !== id));
+    },
+    [items]
+  );
 
   console.log("ParentComponent rendered");
 
