@@ -16,12 +16,9 @@ function ParentComponent() {
     { id: 3, name: "Cherry" },
   ]);
 
-  const removeItem = useCallback(
-    (id) => {
-      setItems(items.filter((item) => item.id !== id));
-    },
-    [items]
-  );
+  const removeItem = useCallback((id) => {
+    setItems((prevItems) => prevItems.filter((item) => item.id !== id));
+  }, []);
 
   console.log("ParentComponent rendered");
 
