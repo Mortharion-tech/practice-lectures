@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 
-function ChildComponent({ action, item }) {
+const ChildComponent = memo(function ChildComponent({ action, item }) {
   console.log("ChildComponent rendered");
   return (
     <div>
       <button onClick={() => action(item.id)}>Remove {item.name}</button>
     </div>
   );
-}
+});
 
 function ParentComponent() {
   const [items, setItems] = useState([
