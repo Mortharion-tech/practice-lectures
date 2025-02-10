@@ -1,7 +1,19 @@
 import { useState } from "react";
 import "./App.css";
 
-export default function Dialog({ title, subtitle, theme = "light", onClose }) {
+interface CardProps {
+  title: string;
+  subtitle: string;
+  theme: "dark" | "light";
+  onClose: (value: string) => void;
+}
+
+export default function Dialog({
+  title,
+  subtitle,
+  theme = "light",
+  onClose,
+}: CardProps) {
   const [isOpened, setIsOpened] = useState(false);
 
   const handleClose = (event: React.MouseEvent<HTMLButtonElement>) => {
