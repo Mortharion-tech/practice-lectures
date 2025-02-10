@@ -8,6 +8,8 @@ export default function Dialog({ title, subtitle }) {
     setIsOpened(false);
   };
 
+  if (!isOpened) return null;
+
   return (
     <div className={``}>
       <h2>{title}</h2>
