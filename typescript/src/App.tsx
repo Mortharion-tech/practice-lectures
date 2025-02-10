@@ -1,7 +1,14 @@
 import "./App.css";
 
-function App() {
-  return <></>;
+export default function Dialog() {
+  return (
+    <div className={``}>
+      <h2></h2>
+      <p></p>
+      <div>
+        <button>No</button>
+        <button>Yes</button>
+      </div>
+    </div>
+  );
 }
-
-export default App;
