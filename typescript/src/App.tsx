@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 
-export default function Dialog({ title, subtitle }) {
+export default function Dialog({ title, subtitle, theme = "light" }) {
   const [isOpened, setIsOpened] = useState(false);
 
   const handleClose = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -11,7 +11,7 @@ export default function Dialog({ title, subtitle }) {
   if (!isOpened) return null;
 
   return (
-    <div className={``}>
+    <div className={`card-${theme}`}>
       <h2>{title}</h2>
       <p>{subtitle}</p>
       <div>
