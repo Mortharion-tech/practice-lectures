@@ -3,8 +3,8 @@ import "./App.css";
 
 interface CardProps {
   title: string;
-  subtitle: string;
-  theme: "dark" | "light";
+  subtitle?: string;
+  theme?: "dark" | "light";
   onClose: (value: string) => void;
 }
 
