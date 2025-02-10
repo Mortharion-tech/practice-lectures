@@ -1,11 +1,12 @@
 import { useState } from "react";
 import "./App.css";
 
-export default function Dialog({ title, subtitle, theme = "light" }) {
+export default function Dialog({ title, subtitle, theme = "light", onClose }) {
   const [isOpened, setIsOpened] = useState(false);
 
   const handleClose = (event: React.MouseEvent<HTMLButtonElement>) => {
     setIsOpened(false);
+    onClose(event.currentTarget.innerText);
   };
 
   if (!isOpened) return null;
