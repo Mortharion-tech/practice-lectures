@@ -2,10 +2,10 @@ import { useState } from "react";
 import "./App.css";
 
 interface CardProps {
-  title: string;
-  subtitle?: string;
+  title: string; //  required prop
+  subtitle?: string; //  optional prop
   theme?: "dark" | "light";
-  onClose: (value: string) => void;
+  onClose: (value: string) => void; //  function which accepts string & returns nothing
 }
 
 export default function Dialog({
@@ -14,11 +14,11 @@ export default function Dialog({
   theme = "light",
   onClose,
 }: CardProps) {
-  const [isOpened, setIsOpened] = useState(false);
+  const [isOpened, setIsOpened] = useState(false); // isOpened now has type boolean assigned
 
   const handleClose = (event: React.MouseEvent<HTMLButtonElement>) => {
     setIsOpened(false);
-    onClose(event.currentTarget.innerText);
+    onClose(event.currentTarget.innerText); // Call function from props with "Yes" or "No" value
   };
 
   if (!isOpened) return null;
